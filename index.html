@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Hannah or Miley Quiz</title>
+    <meta
+      name="description"
+      content="A full-screen, iPad-friendly quiz that reveals whether you are more Hannah Montana or Miley Stewart."
+    />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-left" aria-hidden="true"></div>
+    <div class="ambient ambient-right" aria-hidden="true"></div>
+    <main class="app-shell">
+      <div class="brand-strip" aria-label="Hannah Montana branding">
+        <img
+          class="brand-anniversary-logo"
+          src="./assets/brand/hm20-anniversary-logo-lockup.png"
+          alt="Hannah Montana 20th Anniversary Special logo"
+        />
+      </div>
+      <section
+        id="app"
+        class="quiz-stage"
+        aria-live="polite"
+        aria-atomic="true"
+      ></section>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>

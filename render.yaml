@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: hannah-or-miley-quiz
+    runtime: node
+    plan: starter
+    region: ohio
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/healthz
+    disk:
+      name: analytics-data
+      mountPath: /var/data/hannah-or-miley
+      sizeGB: 1
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: DATA_DIR
+        value: /var/data/hannah-or-miley
+      - key: PUBLIC_BASE_URL
+        sync: false
+      - key: ADMIN_ACCESS_TOKEN
+        sync: false
+      - key: TWILIO_ACCOUNT_SID
+        sync: false
+      - key: TWILIO_AUTH_TOKEN
+        sync: false
+      - key: TWILIO_MESSAGING_SERVICE_SID
+        sync: false
+      - key: TWILIO_FROM_NUMBER
+        sync: false
+      - key: SMS_CONSENT_LABEL
+        value: I confirm this guest asked to receive this result by text.
+      - key: SMS_RATE_LIMIT_MAX
+        value: "8"
+      - key: SMS_RATE_LIMIT_WINDOW_MS
+        value: "300000"

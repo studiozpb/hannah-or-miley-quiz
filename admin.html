@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Hannah or Miley Admin Analytics</title>
+    <meta
+      name="description"
+      content="Admin analytics dashboard for the Hannah or Miley quiz."
+    />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./admin.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-left" aria-hidden="true"></div>
+    <div class="ambient ambient-right" aria-hidden="true"></div>
+    <main class="admin-shell">
+      <header class="admin-header">
+        <div class="admin-header-copy">
+          <span class="admin-kicker">Hannah or Miley</span>
+          <h1>Quiz Analytics</h1>
+          <p>Track result mix, completion trends, and guest delivery actions by date and hour.</p>
+        </div>
+        <a class="admin-home-link" href="./">Guest Quiz</a>
+      </header>
+
+      <section class="admin-panel auth-panel" id="auth-panel">
+        <div>
+          <span class="panel-kicker">Access</span>
+          <h2>Unlock dashboard</h2>
+          <p id="auth-copy">Enter the admin access token for this deployment.</p>
+        </div>
+        <form id="auth-form" class="auth-form">
+          <input
+            class="admin-input"
+            id="admin-token"
+            name="adminToken"
+            type="password"
+            placeholder="Admin token"
+            autocomplete="current-password"
+          />
+          <button class="admin-button" type="submit">Unlock</button>
+        </form>
+      </section>
+
+      <section class="admin-panel filters-panel">
+        <div class="filters-copy">
+          <span class="panel-kicker">Filters</span>
+          <h2>Usage window</h2>
+        </div>
+        <form id="filters-form" class="filters-form">
+          <label class="admin-field">
+            <span>From date</span>
+            <input class="admin-input" id="from-date" name="fromDate" type="date" />
+          </label>
+          <label class="admin-field">
+            <span>To date</span>
+            <input class="admin-input" id="to-date" name="toDate" type="date" />
+          </label>
+          <label class="admin-field">
+            <span>Start hour</span>
+            <select class="admin-input" id="hour-start" name="hourStart"></select>
+          </label>
+          <label class="admin-field">
+            <span>End hour</span>
+            <select class="admin-input" id="hour-end" name="hourEnd"></select>
+          </label>
+          <button class="admin-button" id="refresh-button" type="submit">Refresh</button>
+        </form>
+        <p class="panel-note" id="timezone-note"></p>
+      </section>
+
+      <p class="dashboard-status" id="dashboard-status" aria-live="polite"></p>
+
+      <section class="summary-grid" id="summary-grid"></section>
+
+      <section class="insights-grid">
+        <article class="admin-panel">
+          <span class="panel-kicker">Highlights</span>
+          <h2>Quick reads</h2>
+          <div class="highlights-list" id="highlights-list"></div>
+        </article>
+        <article class="admin-panel">
+          <span class="panel-kicker">Result mix</span>
+          <h2>Who guests got</h2>
+          <div class="result-mix" id="result-mix"></div>
+        </article>
+      </section>
+
+      <section class="charts-grid">
+        <article class="admin-panel">
+          <span class="panel-kicker">By day</span>
+          <h2>Daily activity</h2>
+          <div class="bars-list" id="usage-by-day"></div>
+        </article>
+        <article class="admin-panel">
+          <span class="panel-kicker">By hour</span>
+          <h2>Hourly activity</h2>
+          <div class="bars-list" id="usage-by-hour"></div>
+        </article>
+      </section>
+
+      <section class="admin-panel">
+        <span class="panel-kicker">Recent completions</span>
+        <h2>Latest guests</h2>
+        <div class="recent-table-wrap">
+          <table class="recent-table">
+            <thead>
+              <tr>
+                <th>Timestamp</th>
+                <th>Result</th>
+                <th>Completion time</th>
+              </tr>
+            </thead>
+            <tbody id="recent-completions"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+    <script src="./admin.js"></script>
+  </body>
+</html>
