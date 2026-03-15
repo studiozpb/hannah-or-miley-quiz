@@ -305,7 +305,6 @@ function renderResult(direction = "none") {
   const canUseNativeShare = supportsLikelyNativeFileShare();
   const isDownloading = state.delivery.pendingAction === "download";
   const isSending = state.delivery.pendingAction === "sms";
-  const deliveryTitle = smsEnabled ? "Save or text the result card" : "Save the result card";
   const feedbackMarkup = state.delivery.feedbackMessage
     ? `
         <p class="delivery-status is-${state.delivery.feedbackKind}" aria-live="polite">
@@ -361,21 +360,11 @@ function renderResult(direction = "none") {
           <h2 id="result-title" class="result-headline">${result.name}<span>${result.titleAccent}</span></h2>
         </div>
         <p class="result-copy">${result.description}</p>
-        <section class="delivery-panel" aria-labelledby="delivery-title">
-          <div class="delivery-copy">
-            <span class="placeholder-label">Guest take-home</span>
-            <h3 id="delivery-title" class="delivery-title">${deliveryTitle}</h3>
-            <p class="delivery-note">
-              Each result uses a dedicated JPEG file. Replace the files in <code>assets/results/</code> later without changing the quiz flow.
-            </p>
-          </div>
+        <section class="delivery-panel" aria-label="Result delivery actions">
           <div class="delivery-actions">
             <button class="primary-button" type="button" id="download-button" ${canDownload ? "" : "disabled"}>
-              ${isDownloading ? (canUseNativeShare ? "Preparing Share..." : "Preparing JPEG...") : getResultActionLabel(canUseNativeShare)}
+              ${isDownloading ? (canUseNativeShare ? "Preparing Share..." : "Preparing JPEG...") : getResultActionLabel()}
             </button>
-            <span class="delivery-hint">
-              ${getResultActionHint(canDownload, canUseNativeShare)}
-            </span>
           </div>
           ${smsMarkup}
           ${feedbackMarkup}
@@ -860,20 +849,8 @@ function shouldAnimatePageTransition(direction) {
   return !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
-function getResultActionLabel(canUseNativeShare) {
-  return canUseNativeShare ? "Share / Save JPEG" : "Download JPEG";
-}
-
-function getResultActionHint(canDownload, canUseNativeShare) {
-  if (!canDownload) {
-    return "Add a result JPEG to enable downloads.";
-  }
-
-  if (canUseNativeShare) {
-    return "Opens the native share menu when supported so guests can save or send the image.";
-  }
-
-  return "Saves the configured result card to this device.";
+function getResultActionLabel() {
+  return "Save and Share Your Result";
 }
 
 function supportsLikelyNativeFileShare() {
