@@ -197,6 +197,11 @@ select {
   min-height: 0;
 }
 
+.result-page .content-stack {
+  grid-template-rows: auto auto auto auto;
+  align-content: start;
+}
+
 .page.no-media .content-stack {
   width: min(100%, 58rem);
   margin: 0 auto;
@@ -716,6 +721,17 @@ select {
 
 .result-cta-row {
   justify-content: center;
+  align-items: center;
+  margin-top: 0.25rem;
+}
+
+.result-cta-row .primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 11.5rem;
+  min-height: 3.5rem;
+  padding-inline: 1.6rem;
 }
 
 .cta-copy {
@@ -850,6 +866,14 @@ select {
 
   .cta-row {
     align-items: stretch;
+  }
+
+  .result-cta-row {
+    align-items: center;
+  }
+
+  .result-cta-row .primary-button {
+    width: min(100%, 18rem);
   }
 
   .placeholder-art {
